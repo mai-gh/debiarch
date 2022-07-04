@@ -1,5 +1,15 @@
 #!/bin/bash
 
+SCRIPT_URL='https://raw.githubusercontent.com/mai-gh/debiarch/main/pacman'
+
+.updateScript () {
+  curl "$SCRIPT_URL" > /usr/bin/pacman &&
+  chmod +x /usr/bin/pacman &&
+  echo "Successfully updated /usr/bin/pacman from $SCRIPT_URL"
+}
+
+
+
 ### Variables ###
 version="Beta"
 delay="1"
@@ -232,6 +242,7 @@ use 'pacman {-h --help}' with an operation for available options";;
 
 ### Logic ###
 case "$1" in
+  --update-script) .updateScript; exit;;
   -S|--sync) .sync; exit;;
   -Sy|-Syyu) .update; exit;;
   -Syu|Syyu|Syyuu) .update; .upgrade; exit;;
