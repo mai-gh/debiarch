@@ -10,8 +10,12 @@ but it was first written in 2015 and I can't guarantee that it's not missing ess
 3. Check that you have internet with ``ip a``. If you're using ethernet it should already be connected, otherwise you'll need to configure  ``interfaces(5)`` and probably ``wpa_supplicant(8)``
 
 3. ``sudo su -``
-3. ``curl https://gitlab.com/trivoxel-utils/deb-pacman/-/raw/master/pacman > /usr/bin/pacman``
+3. ``curl https://raw.githubusercontent.com/mai-gh/debiarch/main/pacman > /usr/bin/pacman``
 3. ``chmod +x /usr/bin/pacman``
+3. ``pacman -S openssh-server``
+3. ``passwd user``
+3. ``systemctl start sshd``
+
 3. ``echo "deb http://deb.debian.org/debian bullseye contrib" >> /etc/apt/sources.list``
 3. ``pacman -S arch-install-scripts``
 

@@ -68,10 +68,7 @@ esac
 }
 .sync () {
   .checkRoot
-  case $plat in
-    deb) sudo apt install "$(.noConfirm)" "$pack";;
-    suse) sudo zypper install "$(.noConfirm)" "$pack";;
-  esac
+  apt install "$(.noConfirm)" $pack
 }
 .search () {
   case $plat in
@@ -95,10 +92,7 @@ esac
 }
 .update () {
   .checkRoot
-  case $plat in
-    deb) sudo apt update;;
-    suse) sudo zypper update "$(.noConfirm)" "$pack";;
-  esac
+  apt update
 }
 .upgrade () {
   .checkRoot
@@ -243,8 +237,8 @@ use 'pacman {-h --help}' with an operation for available options";;
 ### Logic ###
 case "$1" in
   --update-script) .updateScript; exit;;
-  -S|--sync) .sync; exit;;
-  -Sy|-Syyu) .update; exit;;
+  -S) .sync; exit;;
+  -Sy) .update; exit;;
   -Syu|Syyu|Syyuu) .update; .upgrade; exit;;
   -Ss|--search) .search; exit;;
   -U|--upgrade) .upgrade; exit;;
