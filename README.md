@@ -45,7 +45,8 @@ cat /boot/grub/grub.cfg
 useradd -m -g users -s /bin/bash USERNAME
 passwd
 passwd USERNAME
-pacman -S openssh-server
+pacman -S openssh-server python3
+ln -sv /usr/bin/python3 /usr/bin/python
 systemctl enable ssh
 exit
 reboot
