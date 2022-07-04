@@ -24,7 +24,7 @@ fi
 ### Functions ###
 .noConfirm () {
   if [[ $noCnf = 1 ]]; then
-    echo "-y";;
+    echo "-y"
   fi
 }
 
