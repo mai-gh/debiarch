@@ -46,6 +46,8 @@ fi
 ### Logic ###
 case "$1" in
   --update-script) .updateScript; exit;;
+  --pkgfile-update) apt-file update; exit;;
+  --pkgfile) apt-file search "$pack"; exit;;
   -S)   .checkRoot; apt install "$(.noConfirm)" $pack; exit;;
   -Sy)  .checkRoot; apt update; exit;;
   -Syu) .checkRoot; apt update; apt upgrade; exit;;
@@ -53,6 +55,7 @@ case "$1" in
   -R)   .checkRoot; apt remove "$(.noConfirm)" $pack; exit;;
   -Ru)  .checkRoot; apt autoremove; exit;;
   -U)   .checkRoot; dpkg -i "$(.noConfirm)" "$pack"; exit;;
+  -Ql)  dpkg -L "$pack"; exit;;
   -h|--help) cat /usr/bin/pacman | tail; exit;;
   *) .invalidInput "$@"; exit;;
 esac
