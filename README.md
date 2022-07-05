@@ -27,6 +27,9 @@ cp /etc/network/interfaces /mnt/etc/network/interfaces
 genfstab /mnt > /mnt/etc/fstab
 arch-chroot /mnt
 export TERM=linux
+mv -vn /usr/sbin/* /usr/bin/
+rm -rf /usr/sbin
+ln -sv /usr/bin /usr/sbin
 ln -sfv /usr/share/zoneinfo/America/New_York /etc/localtime
 echo HOSTNAME > /etc/hostname
 echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
